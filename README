@@ -1,0 +1,44 @@
+Kassiopeia
+==========
+
+
+This tool implements a linearizability analysis for concurrent data structures
+based on satisfiability solving. It translates the analysis introduced in [1]
+into a state transition system and then applies an inductive model checking
+algorithm based on the PDR method.
+
+The implementation of this tool was part of my Bachelor's Thesis.
+
+
+[1] Sebastian Wolff. "Thread-Modular Reasoning for Heap-Manipulating Programs: Exploiting Pointer Race Freedom".
+    MA thesis. Technische Universität Kaiserslautern, 2015.
+
+
+
+Compiling
+---------
+
+Compilation was tested with
+  - GNU make 4.2.1
+  - g++ 6.2.1
+  - Z3 4.4.1
+
+
+To make the project type `make` in the root directory. This will create one
+binary for each test case, ready to be executed.
+
+
+
+Adapting
+--------
+
+To analyse your own programs, create a new .cpp file. It must contain
+  - a function `program *testprogram()`,
+  - a function `observer *observer()` and
+  - an implementation of `OneThreadView::build_initial()`.
+
+Compile the file to an object file and link it together with `test.o`.
+
+
+For inspiration consider the existing .cpp files and the Makefile.
+
